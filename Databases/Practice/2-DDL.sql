@@ -1,0 +1,142 @@
+USE [Recipes]
+GO
+
+
+------------------------------ INGREDIENT_CLASSES TABLE ------------------------------
+
+CREATE TABLE [dbo].[INGREDIENT_CLASSES](
+	[IngredientClassID] [bigint] NOT NULL,
+	[IngredientClassDescription] [varchar](50) NULL,
+ CONSTRAINT [PK_INGREDIENT_CLASSES] PRIMARY KEY CLUSTERED 
+(
+	[IngredientClassID] ASC
+)WITH (IGNORE_DUP_KEY = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+------------------------------ MEASUREMENTS TABLE ------------------------------
+
+CREATE TABLE [dbo].[MEASUREMENTS](
+	[MeasureAmountID] [bigint] NOT NULL,
+	[MeasurementDescription] [varchar](50) NULL,
+ CONSTRAINT [PK_MEASUREMENTS] PRIMARY KEY CLUSTERED 
+(
+	[MeasureAmountID] ASC
+)WITH (IGNORE_DUP_KEY = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+------------------------------ INGREDIENTS TABLE ------------------------------
+
+CREATE TABLE [dbo].[INGREDIENTS](
+	[IngredientID] [bigint] NOT NULL,
+	[IngredientName] [varchar](50) NULL,
+	[IngredientClassID] [bigint] NULL,
+	[MeasureAmountID] [bigint] NULL,
+ CONSTRAINT [PK_INGREDIENTS] PRIMARY KEY CLUSTERED 
+(
+	[IngredientID] ASC
+)WITH (IGNORE_DUP_KEY = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+------------------------------ RECIPE_INGREDIENTS TABLE ------------------------------
+
+CREATE TABLE [dbo].[RECIPE_INGREDIENTS](
+	[RecipeID] [bigint] NOT NULL,
+	[RecipeSeqNo] [bigint] NULL,
+	[IngredientID] [bigint] NULL,
+	[MeasureAmountID] [bigint] NULL,
+	[Amount] [bigint] NULL,
+ CONSTRAINT [PK_RECIPE_INGREDIENTS] PRIMARY KEY CLUSTERED 
+(
+	[RecipeID] ASC
+)WITH (IGNORE_DUP_KEY = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+------------------------------ RECIPE_CLASSES TABLE ------------------------------
+
+CREATE TABLE [dbo].[RECIPE_CLASSES](
+	[RecipeClassID] [bigint] NOT NULL,
+	[RecipeClassDescription] [varchar](50) NULL,
+ CONSTRAINT [PK_RECIPE_CLASSES] PRIMARY KEY CLUSTERED 
+(
+	[RecipeClassID] ASC
+)WITH (IGNORE_DUP_KEY = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+------------------------------ [RECIPES] TABLE ------------------------------
+
+CREATE TABLE [dbo].[RECIPES](
+	[RecipeID] [bigint] NOT NULL,
+	[RecipeTitle] [varchar](200) NULL,
+	[RecipeClassID] [bigint] NULL,
+	[Preparation] [varchar](2000) NULL,
+	[Notes] [varchar](2000) NULL,
+ CONSTRAINT [PK_RECIPES] PRIMARY KEY CLUSTERED 
+(
+	[RecipeID] ASC
+)WITH (IGNORE_DUP_KEY = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+------------------------------ INGREDIENTS TO INGREDIENT_CLASSES RELATIONSHIP ------------------------------
+
+ALTER TABLE [dbo].[INGREDIENTS]  WITH CHECK ADD  CONSTRAINT [FK_INGREDIENTS_INGREDIENT_CLASSES] FOREIGN KEY([IngredientClassID])
+REFERENCES [dbo].[INGREDIENT_CLASSES] ([IngredientClassID])
+GO
+ALTER TABLE [dbo].[INGREDIENTS] CHECK CONSTRAINT [FK_INGREDIENTS_INGREDIENT_CLASSES]
+GO
+
+
+------------------------------ INGREDIENTS TO MEASUREMENTS RELATIONSHIP ------------------------------
+
+ALTER TABLE [dbo].[INGREDIENTS]  WITH CHECK ADD  CONSTRAINT [FK_INGREDIENTS_MEASUREMENTS] FOREIGN KEY([MeasureAmountID])
+REFERENCES [dbo].[MEASUREMENTS] ([MeasureAmountID])
+GO
+ALTER TABLE [dbo].[INGREDIENTS] CHECK CONSTRAINT [FK_INGREDIENTS_MEASUREMENTS]
+GO
+
+
+------------------------------ RECIPE_INGREDIENTS TO MEASUREMENTS RELATIONSHIP ------------------------------
+
+ALTER TABLE [dbo].[RECIPE_INGREDIENTS]  WITH CHECK ADD  CONSTRAINT [FK_RECIPE_INGREDIENTS_MEASUREMENTS] FOREIGN KEY([MeasureAmountID])
+REFERENCES [dbo].[MEASUREMENTS] ([MeasureAmountID])
+GO
+ALTER TABLE [dbo].[RECIPE_INGREDIENTS] CHECK CONSTRAINT [FK_RECIPE_INGREDIENTS_MEASUREMENTS]
+GO
+
+
+------------------------------ RECIPE_INGREDIENTS TO INGREDIENTS RELATIONSHIP ------------------------------
+
+ALTER TABLE [dbo].[RECIPE_INGREDIENTS]  WITH CHECK ADD  CONSTRAINT [FK_RECIPE_INGREDIENTS_INGREDIENTS] FOREIGN KEY([IngredientID])
+REFERENCES [dbo].[INGREDIENTS] ([IngredientID])
+GO
+ALTER TABLE [dbo].[RECIPE_INGREDIENTS] CHECK CONSTRAINT [FK_RECIPE_INGREDIENTS_INGREDIENTS]
+GO
+
+
+------------------------------ RECIPES TO RECIPE_INGREDIENTS RELATIONSHIP ------------------------------
+
+ALTER TABLE [dbo].[RECIPE_INGREDIENTS]  WITH CHECK ADD  CONSTRAINT [FK_RECIPES_RECIPE_INGREDIENTS] FOREIGN KEY([RecipeID])
+REFERENCES [dbo].[RECIPES] ([RecipeID])
+GO
+ALTER TABLE [dbo].[RECIPE_INGREDIENTS] CHECK CONSTRAINT [FK_RECIPES_RECIPE_INGREDIENTS]
+GO
+
+
+------------------------------ RECIPES TO RECIPE_CLASSES RELATIONSHIP ------------------------------
+
+ALTER TABLE [dbo].[RECIPES]  WITH CHECK ADD  CONSTRAINT [FK_RECIPE_CLASSES_RECIPES] FOREIGN KEY([RecipeClassID])
+REFERENCES [dbo].[RECIPE_CLASSES] ([RecipeClassID])
+GO
+ALTER TABLE [dbo].[RECIPES] CHECK CONSTRAINT [FK_RECIPE_CLASSES_RECIPES]
+GO

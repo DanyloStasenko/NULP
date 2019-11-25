@@ -1,0 +1,41 @@
+/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/bin/java "-javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=61642:/Applications/IntelliJ IDEA.app/Contents/bin" -Dfile.encoding=UTF-8 -classpath /Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/jre/lib/deploy.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/jre/lib/ext/cldrdata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/jre/lib/ext/dnsns.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/jre/lib/ext/jaccess.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/jre/lib/ext/jfxrt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/jre/lib/ext/localedata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/jre/lib/ext/nashorn.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/jre/lib/ext/sunec.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/jre/lib/ext/zipfs.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/jre/lib/javaws.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/jre/lib/jfxswt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/jre/lib/management-agent.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/jre/lib/plugin.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/lib/ant-javafx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/lib/dt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/lib/javafx-mx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/lib/jconsole.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/lib/packager.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/lib/sa-jdi.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/lib/tools.jar:/Users/danylostasenko/gauss/out/production/gauss Main
+Input:
+0.650000; 	-0.930000; 	0.450000; 	-0.720000;
+1.150000; 	0.430000; 	-0.720000; 	1.240000;
+0.560000; 	-0.180000; 	1.030000; 	2.150000;
+
+Step 1.1, K = -0.5652174
+Working with [1.15, 0.43, -0.72, 1.24]
++ Multiplied:[-0.65, -0.24304348, 0.40695652, -0.70086956]
++ Adding: [0.65, -0.93, 0.45, -0.72]
+= Res: [0.0, -1.1730435, 0.8569565, -1.4208696]
+
+	 [0.65, -0.93, 0.45, -0.72]
+	 [0.0, -1.1730435, 0.8569565, -1.4208696]
+	 [0.56, -0.18, 1.03, 2.15]
+
+Step 1.2, K = -1.1607143
+Working with [0.56, -0.18, 1.03, 2.15]
++ Multiplied:[-0.65, 0.20892857, -1.1955357, -2.4955359]
++ Adding: [0.65, -0.93, 0.45, -0.72]
+= Res: [0.0, -0.7210714, -0.7455357, -3.2155359]
+
+	 [0.65, -0.93, 0.45, -0.72]
+	 [0.0, -1.1730435, 0.8569565, -1.4208696]
+	 [0.0, -0.7210714, -0.7455357, -3.2155359]
+
+Step 2.2, K = -1.6268063
+Working with [0.0, -0.7210714, -0.7455357, -3.2155359]
++ Multiplied:[-0.0, 1.1730435, 1.2128421, 5.231054]
++ Adding: [0.0, -1.1730435, 0.8569565, -1.4208696]
+= Res: [0.0, 0.0, 2.0697985, 3.8101842]
+
+	 [0.65, -0.93, 0.45, -0.72]
+	 [0.0, -1.1730435, 0.8569565, -1.4208696]
+	 [0.0, 0.0, 2.0697985, 3.8101842]
+
+todo: rename to x,y,z
+Results:
+x0 = 1.275039; x1 = 2.556083; x2 = 1.840848;
+
+Process finished with exit code 0
